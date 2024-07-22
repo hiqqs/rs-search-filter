@@ -1,0 +1,5 @@
+.ItemList {
+  table, td, th {
+    border-bottom: 1px solid;
+  }
+}
