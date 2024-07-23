@@ -21,8 +21,8 @@ const FilterPanel = ({ filters, onFilterChange, onSortOrderChange, categories })
   return (
     <div>
       <div>
-        <label for="category">Category:</label>
-        <select name="category" id="category" value={filters.category} onChange={handleCategoryChange}>
+        <label htmlFor="category">Category:</label>
+        <select name="category" id="category" value={filters.category} onChange={handleCategoryChange} data-testid="filter-category-dropdown">
           <option value="">All</option>
           {categories.map(category => (
             <option key={category} value={category}>{category}</option>
@@ -30,8 +30,8 @@ const FilterPanel = ({ filters, onFilterChange, onSortOrderChange, categories })
         </select>
       </div>
       <div>
-        <label for="price-range">Price Range:</label>
-        <select name="price-range" id="price-range" value={filters.priceRange.join(',')} onChange={handlePriceChange}>
+        <label htmlFor="price-range">Price Range:</label>
+        <select name="price-range" id="price-range" value={filters.priceRange.join(',')} onChange={handlePriceChange} data-testid="filter-price-range-dropdown">
           <option value="0,1000">All</option>
           <option value="0,100">0 - 100</option>
           <option value="100,500">100 - 500</option>
@@ -39,8 +39,8 @@ const FilterPanel = ({ filters, onFilterChange, onSortOrderChange, categories })
         </select>
       </div>
       <div>
-        <label for="rating">Rating:</label>
-        <select name="rating" id="rating" value={filters.rating} onChange={handleRatingChange}>
+        <label htmlFor="rating">Rating:</label>
+        <select name="rating" id="rating" value={filters.rating} onChange={handleRatingChange} data-testid="filter-rating-dropdown" >
           <option value="0">All</option>
           <option value="4">4 stars and above</option>
           <option value="3">3 stars and above</option>
@@ -49,8 +49,8 @@ const FilterPanel = ({ filters, onFilterChange, onSortOrderChange, categories })
         </select>
       </div>
       <div>
-        <label for="sort-by">Sort By:</label>
-        <select name="sort-by" id="sort-by" onChange={handleSortChange}>
+        <label htmlFor="sort-by">Sort By:</label>
+        <select name="sort-by" id="sort-by" onChange={handleSortChange} data-testid="sort-by">
           <option value="">None</option>
           <option value="priceDesc">Price: Low to High</option>
           <option value="priceAsc">Price: High to Low</option>

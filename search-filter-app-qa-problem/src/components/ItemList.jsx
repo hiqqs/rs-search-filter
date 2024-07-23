@@ -2,28 +2,28 @@ import React from 'react';
 import "./ItemList.css";
 
 const ItemList = ({ items }) => {
-  if (items.length === 0) {
-    // no results found
-  }
-
   return (
     <div>
-      <table className="ItemList">
-        <tr>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Rating</th>
-        </tr>
-        {items.map(item => (
-          <tr key={item.id}>
-            <td>{item.name}</td>
-            <td>{item.category}</td>
-            <td>{item.price}</td>
-            <td>{item.rating} stars</td>
-          </tr>
-        ))}
-      </table>
+        <table className="ItemList" data-testid="item-list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((item, index) => (
+              <tr key={index} data-testid="item-row">
+                <td data-testid="item-name">{item.name}</td>
+                <td data-testid="item-category">{item.category}</td>
+                <td data-testid="item-price">{item.price}</td>
+                <td data-testid="item-rating">{item.rating} stars</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
     </div>
   );
 };

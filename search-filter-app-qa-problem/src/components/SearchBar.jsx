@@ -15,6 +15,7 @@ const SearchBar = ({ onSearch }) => {
         placeholder="Search..."
         value={term}
         onChange={handleChange}
+        data-testid="search-input"
       />
     </div>
   );

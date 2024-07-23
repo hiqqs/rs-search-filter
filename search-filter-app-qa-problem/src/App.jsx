@@ -51,7 +51,7 @@ const App = () => {
       {filteredItems.length > 0 ? (
         <ItemList items={filteredItems} />
       ) : (
-        <p>No results found</p>
+        <p data-testid="no-results-message">No results found</p>
       )}
     </div>
   );
