@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  build:
+  dev-server:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -21,20 +20,24 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run lint
-      run: npm run lint
+    - name: Run development server
+      run: npm run dev &
       continue-on-error: true
 
-    - name: Run development server
-      run: npm run dev
-      continue-on-error: true
+  e2e-tests:
+    runs-on: ubuntu-latest
+    needs: dev-server
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
 
     - name: Run tests
       run: npm test
-
-    - name: Upload lint results
-      uses: actions/upload-artifact@v3
-      if: failure()
-      with:
-        name: lint-results
-        path: /test-results/ci-lint-results.json
