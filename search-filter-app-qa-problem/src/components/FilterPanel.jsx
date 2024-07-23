@@ -44,14 +44,16 @@ const FilterPanel = ({ filters, onFilterChange, onSortOrderChange, categories })
           <option value="0">All</option>
           <option value="4">4 stars and above</option>
           <option value="3">3 stars and above</option>
+          <option value="2">2 stars and above</option>
+          <option value="1">1 star and above</option>
         </select>
       </div>
       <div>
         <label for="sort-by">Sort By:</label>
         <select name="sort-by" id="sort-by" onChange={handleSortChange}>
           <option value="">None</option>
-          <option value="priceAsc">Price: Low to High</option>
-          <option value="priceDesc">Price: High to Low</option>
+          <option value="priceDesc">Price: Low to High</option>
+          <option value="priceAsc">Price: High to Low</option>
           <option value="ratingDesc">Rating: High to Low</option>
         </select>
       </div>

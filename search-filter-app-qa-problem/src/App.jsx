@@ -24,7 +24,7 @@ const App = () => {
 
   const filteredItems = items
     .filter(item =>
-      item.name.includes(searchTerm) &&
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (filters.category ? item.category === filters.category : true) &&
       item.price >= filters.priceRange[0] && item.price <= filters.priceRange[1] &&
       item.rating >= filters.rating
@@ -48,7 +48,11 @@ const App = () => {
         onSortOrderChange={handleSortOrderChange}
         categories={categories}
       />
-      <ItemList items={filteredItems} />
+      {filteredItems.length > 0 ? (
+        <ItemList items={filteredItems} />
+      ) : (
+        <p>No results found</p>
+      )}
     </div>
   );
 };
