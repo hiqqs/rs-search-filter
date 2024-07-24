@@ -16,6 +16,15 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Run Linting
+      run: npm run lint-ci
+
+    - name: Upload lint results
+      uses: actions/upload-artifact@v3
+      with:
+        name: lint-results
+        path: ./test-results/ci-lint-results.json
+
     - name: Install Playwright browsers
       run: npx playwright install
 
