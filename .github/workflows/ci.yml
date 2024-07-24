@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  e2e-tests:
+  lint-and-e2e-tests:
     runs-on: ubuntu-latest
 
     steps:
