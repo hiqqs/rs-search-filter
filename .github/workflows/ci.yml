@@ -44,8 +44,20 @@ jobs:
     - name: Install Playwright browsers
       run: npx playwright install
 
-    - name: Wait for server to be ready
-      run: sleep 30  # Adjust the wait time as needed
+    - name: Install missing libraries
+      run: sudo apt-get update && sudo apt-get install -y \
+        libwoff2-dev \
+        libvpx-dev \
+        libevent-dev \
+        libopus-dev \
+        libgstreamer1.0-dev \
+        libgstreamer-plugins-base1.0-dev \
+        libharfbuzz-dev \
+        libhyphen-dev \
+        libmanette-0.2-dev \
+        libflite1 \
+        libgles2-mesa-dev \
+        libx264-dev
 
     - name: Run E2E tests
       run: npm test
