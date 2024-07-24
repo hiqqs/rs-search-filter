@@ -21,3 +21,11 @@ jobs:
 
     - name: Run Playwright tests
       run: npx playwright test
+
+    - name: Upload Playwright test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: playwright-reports
+        path: |
+          test-results/index.html
+          test-results/e2e-test-results.json
