@@ -27,8 +27,6 @@ jobs:
     - name: Run Playwright tests
       run: |
         npm test
-      env:
-        BASE_URL: 'http://localhost:5173'
     
     - name: Stop development server
       run: |
