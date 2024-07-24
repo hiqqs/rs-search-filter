@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "lint-ci": "eslint . --format json --output-file ./test-results/ci-lint-results.json",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "show-report": "playwright show-report",

@@ -1,0 +1,31 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install Playwright browsers
+      run: npx playwright install
+
+    - name: Run Playwright tests
+      run: npx playwright test
+
+    - name: Upload Playwright test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: playwright-reports
+        path: |
+          test-results/index.html
+          test-results/e2e-test-results.json
