@@ -21,7 +21,6 @@ jobs:
     - name: Install Playwright browsers
       run: |
         npx playwright install chromium
-        npx playwright install chrome
         npx playwright install firefox
         npx playwright install msedge
 
