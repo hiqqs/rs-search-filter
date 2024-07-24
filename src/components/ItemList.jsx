@@ -1,4 +1,3 @@
-import React from 'react';
 import "./ItemList.css";
 
 const ItemList = ({ items }) => {
