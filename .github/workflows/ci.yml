@@ -6,36 +6,46 @@ on:
       - main
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Linting
+        run: npm run lint-ci
+        continue-on-error: true # Continue even if linting fails to upload the report
+
+      - name: Upload lint results
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-results
+          path: ./test-results/ci-lint-results.html
+
   e2e-tests:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    
-    - name: Install dependencies
-      run: npm install
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run Linting
-      run: npm run lint-ci
-      continue-on-error: true # not ideal but since we already have lint failures allow report to get generated
+      - name: Install Playwright browsers
+        run: npx playwright install
 
-    - name: Upload lint results
-      uses: actions/upload-artifact@v3
-      with:
-        name: lint-results
-        path: ./test-results/ci-lint-results.html
+      - name: Run Playwright tests
+        run: npm test
 
-    - name: Install Playwright browsers
-      run: npx playwright install
-
-    - name: Run Playwright tests
-      run: npx playwright test
-
-    - name: Upload Playwright test results
-      uses: actions/upload-artifact@v3
-      with:
-        name: playwright-reports
-        path: |
-          test-results/index.html
-          test-results/e2e-test-results.json
+      - name: Upload Playwright test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-reports
+          path: |
+            test-results/index.html
+            test-results/e2e-test-results.json

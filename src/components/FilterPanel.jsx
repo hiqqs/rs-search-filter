@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FilterPanel = ({ filters, onFilterChange, onSortOrderChange, categories }) => {
   const handleCategoryChange = (e) => {
     onFilterChange({ ...filters, category: e.target.value });
