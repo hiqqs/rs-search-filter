@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: lint-results
-        path: ./test-results/ci-lint-results.json
+        path: ./test-results/ci-lint-results.html
 
     - name: Install Playwright browsers
       run: npx playwright install
